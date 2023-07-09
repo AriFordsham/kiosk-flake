@@ -17,4 +17,5 @@ with lib;
   powerManagement.enable = false;
   system.stateVersion = mkDefault "18.03";
 
+  users.users.root.password = "12345";
 }
