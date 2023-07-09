@@ -1,3 +1,5 @@
 {
-  outputs = {...}: {};
+  outputs = {...}: {
+    nixosConfigurations."nixos" = {};
+  };
 } 
