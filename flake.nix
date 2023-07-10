@@ -8,6 +8,7 @@
       modules = [
         ./virtualbox-demo.nix
         ./netfree.nix
+        ./kiosk.nix
       ];
       specialArgs = attrs;
     };
