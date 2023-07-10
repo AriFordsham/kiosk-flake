@@ -1,4 +1,6 @@
 {pkgs, ...}:{
+    hardware.opengl.enable = true;
+
     users.mutableUsers = false;
 
     users.users.kiosk = {
