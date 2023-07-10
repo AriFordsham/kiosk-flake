@@ -1,4 +1,4 @@
-{...}:{
+{pkgs, ...}:{
     users.mutableUsers = false;
 
     users.users.kiosk = {
@@ -7,5 +7,7 @@
 
     services.cage = {
       enable = true;
+      user = "kiosk";
+      program = "${pkgs.chromium}/bin/chromium";
     };
 }
