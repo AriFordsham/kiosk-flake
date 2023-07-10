@@ -7,6 +7,16 @@ with lib;
     [ (nixpkgs + /nixos/modules/virtualisation/virtualbox-image.nix)
     ];
 
+  users.mutableUsers = false;
+
+  users.users.demo =
+    { isNormalUser = true;
+      description = "Demo user account";
+      extraGroups = [ "wheel" ];
+      password = "demo";
+      uid = 1000;
+    };
+
   # FIXME: UUID detection is currently broken
   boot.loader.grub.fsIdentifier = "provided";
 
