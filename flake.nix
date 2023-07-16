@@ -7,6 +7,7 @@
       system = "x86_64-linux";
       modules = [
         (nixpkgs + /nixos/modules/virtualisation/hyperv-guest.nix)
+        /etc/nixos/hardware-configuration.nix
         ./netfree.nix
         ./kiosk.nix
       ];
