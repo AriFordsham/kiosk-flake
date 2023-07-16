@@ -6,7 +6,7 @@
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./virtualbox-demo.nix
+        (nixpkgs + /nixos/modules/virtualisation/hyperv-guest.nix)
         ./netfree.nix
         ./kiosk.nix
       ];
