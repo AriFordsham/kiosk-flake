@@ -10,4 +10,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "23.05";
+
+  boot.extraModprobeConfig = ''
+    blacklist hyperv_fb
+  '';
 }
