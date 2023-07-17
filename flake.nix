@@ -7,6 +7,10 @@
       system = "x86_64-linux";
       modules = [
         (nixpkgs + /nixos/modules/virtualisation/hyperv-guest.nix)
+        {
+          boot.loader.systemd-boot.enable = true;
+          boot.loader.efi.canTouchEfiVariables = true;
+        }
         /etc/nixos/hardware-configuration.nix
         ./netfree.nix
         ./kiosk.nix
