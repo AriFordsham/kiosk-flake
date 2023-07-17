@@ -6,7 +6,6 @@
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        (nixpkgs + /nixos/modules/virtualisation/hyperv-guest.nix)
         {
           boot.loader.grub.enable = false;
           boot.loader.systemd-boot.enable = true;
