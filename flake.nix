@@ -8,7 +8,6 @@
       modules = [
         (nixpkgs + /nixos/modules/virtualisation/hyperv-guest.nix)
         /etc/nixos/hardware-configuration.nix
-        { boot.loader.grub.device = "nodev";}
         ./netfree.nix
         ./kiosk.nix
       ];
