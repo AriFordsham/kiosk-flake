@@ -40,7 +40,7 @@
     script = ''
       sleep 2
 
-      status="$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq} -r .BackendState)"
+      status="$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState)"
       if [ $status = "Running" ]; then exit 0; fi
 
       ${pkgs.tailscale}/bin/tailscale up --authkey tskey-auth-kGXEdj2CNTRL-fmYXR9XNi8D6XUK4jNfR9Dri94wx4hAFP 
