@@ -27,4 +27,29 @@
     user = "kiosk";
     program = "${pkgs.chromium}/bin/chromium";
   };
+
+  services.tailscale.enable = true;
+
+  systemd.sevices.tailscale-autoconnect = {
+    after = [ "network-pre.target" "tailscale.service" ];
+    wants = [ "network-pre.target" "tailscale.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig.Type = "oneshot";
+
+    script = ''
+      sleep 2
+
+      status="$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq} -r .BackendState)"
+      if [ $status = "Running" ]; then exit 0; fi
+
+      ${pkgs.tailscale}/bin/tailscale up --authkey tskey-auth-kGXEdj2CNTRL-fmYXR9XNi8D6XUK4jNfR9Dri94wx4hAFP 
+    '';
+  }
+
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "tailscale0" ];
+    allowedTCPPorts = [ config.services.tailscale.port ];
+  }
 }
