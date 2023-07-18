@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   users.mutableUsers = false;
 
   users.users.admin = {
@@ -30,7 +30,7 @@
 
   services.tailscale.enable = true;
 
-  systemd.sevices.tailscale-autoconnect = {
+  systemd.services.tailscale-autoconnect = {
     after = [ "network-pre.target" "tailscale.service" ];
     wants = [ "network-pre.target" "tailscale.service" ];
     wantedBy = [ "multi-user.target" ];
@@ -45,11 +45,11 @@
 
       ${pkgs.tailscale}/bin/tailscale up --authkey tskey-auth-kGXEdj2CNTRL-fmYXR9XNi8D6XUK4jNfR9Dri94wx4hAFP 
     '';
-  }
+  };
 
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
     allowedTCPPorts = [ config.services.tailscale.port ];
-  }
+  };
 }
