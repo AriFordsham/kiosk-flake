@@ -50,6 +50,7 @@
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
-    allowedTCPPorts = [ config.services.tailscale.port ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+    allowedTCPPorts = [ config.services.tailscale.port 22 ];
   };
 }
